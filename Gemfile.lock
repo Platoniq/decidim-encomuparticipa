@@ -258,7 +258,7 @@ GEM
       system_test_html_screenshots (~> 0.1.1)
       webmock (~> 3.0)
       wisper-rspec (~> 1.0)
-    decidim-direct_verifications (0.17.4)
+    decidim-direct_verifications (0.17.5)
       decidim-admin (>= 0.17.0)
       decidim-core (>= 0.17.0)
     decidim-forms (0.17.0)

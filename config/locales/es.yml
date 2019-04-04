@@ -1,0 +1,6 @@
+es:
+  devise:
+    mailer:
+      invitation_instructions:
+        accept_until: Esta invitación te dará acceso como usuario/a de la web %{webpage} y caducará el día %{due_date}.
+        someone_invited_you: Has sido invitado/a a participar en la elaboración del programa electoral de %{application}. Puedes aceptar a través del siguiente enlace.
