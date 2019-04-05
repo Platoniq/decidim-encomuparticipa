@@ -1,0 +1,35 @@
+.author-data .author__name {
+  color: var(--secondary);
+}
+.card__link {
+  color: var(--secondary);
+}
+.button {
+  background-color: var(--secondary);
+  &.process-nav__more {
+  	background-color: var(--primary);
+  	color: white;
+  	i {
+  		background-color: white;
+  	}
+  }
+}
+.button.hollow {
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.section-heading::before  {
+  background-color: var(--secondary);
+}
+
+.process-nav__more, .process-nav__hidden-content__more {
+  color: white;
+  i {
+  	color: white;
+  }
+}
+
+.card__icondata ul li:first-child, .card__block ul li:first-child {
+  color: var(--secondary);
+}
