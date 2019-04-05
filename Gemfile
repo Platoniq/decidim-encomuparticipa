@@ -7,7 +7,7 @@ ruby RUBY_VERSION
 gem "decidim", "0.17.0"
 # gem "decidim-consultations", "0.17.0"
 # gem "decidim-initiatives", "0.17.0"
-gem "decidim-direct_verifications"
+gem "decidim-direct_verifications", github: 'Platoniq/decidim-verifications-direct_verifications'
 
 gem "bootsnap", "~> 1.3"
 

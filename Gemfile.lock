@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
+  revision: b47bb062d2d3dd55c60986c9a121ca5e8e04242d
+  specs:
+    decidim-direct_verifications (0.17.6)
+      decidim-admin (>= 0.17.0)
+      decidim-core (>= 0.17.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -258,9 +266,6 @@ GEM
       system_test_html_screenshots (~> 0.1.1)
       webmock (~> 3.0)
       wisper-rspec (~> 1.0)
-    decidim-direct_verifications (0.17.6)
-      decidim-admin (>= 0.17.0)
-      decidim-core (>= 0.17.0)
     decidim-forms (0.17.0)
       decidim-core (= 0.17.0)
     decidim-generators (0.17.0)
@@ -770,7 +775,7 @@ DEPENDENCIES
   byebug (~> 10.0)
   decidim (= 0.17.0)
   decidim-dev (= 0.17.0)
-  decidim-direct_verifications
+  decidim-direct_verifications!
   dotenv-rails
   faker (~> 1.9)
   fog-aws
