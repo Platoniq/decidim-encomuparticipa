@@ -4,9 +4,11 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", "0.17.0"
-# gem "decidim-consultations", "0.17.0"
-# gem "decidim-initiatives", "0.17.0"
+#DECIDIM_VERSION = "0.17.0"
+DECIDIM_VERSION = {github: "decidim/decidim", branch: "0.17-stable"}
+gem "decidim", DECIDIM_VERSION
+# gem "decidim-consultations", DECIDIM_VERSION
+# gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-direct_verifications", github: 'Platoniq/decidim-verifications-direct_verifications'
 
 gem "bootsnap", "~> 1.3"
