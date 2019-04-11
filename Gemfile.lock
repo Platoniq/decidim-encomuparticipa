@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: 5f8996cbb610ef591e04ce1c1187dd388dd1c727
+  revision: 174ea33c7303341a6148120c61725be61941d0bd
   specs:
     decidim-direct_verifications (0.17.7)
       decidim-admin (>= 0.17.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 92798e52ec90444b02b15135d32ed387092b7993
+  revision: 6f5b67344c8f41a88528a9bd5edf218851fe8477
   branch: 0.17-stable
   specs:
     decidim (0.17.0)
@@ -273,7 +273,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
-    capybara (3.16.1)
+    capybara (3.16.2)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -362,7 +362,7 @@ GEM
     erbse (0.1.3)
       temple
     erubi (1.8.0)
-    et-orbi (1.1.7)
+    et-orbi (1.1.8)
       tzinfo
     etherpad-lite (0.3.0)
       rest-client (>= 1.6)
