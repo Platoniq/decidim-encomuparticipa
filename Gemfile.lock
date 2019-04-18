@@ -7,9 +7,9 @@ GIT
       decidim-core (>= 0.17.0)
 
 GIT
-  remote: https://github.com/decidim/decidim.git
-  revision: 6f5b67344c8f41a88528a9bd5edf218851fe8477
-  branch: 0.17-stable
+  remote: https://github.com/Platoniq/decidim.git
+  revision: 626f9ee0a0b9c4403c4d1a703c416f07024a26b6
+  branch: 0.17-metrics
   specs:
     decidim (0.17.0)
       decidim-accountability (= 0.17.0)
@@ -297,8 +297,8 @@ GEM
       actionpack (>= 3.0)
       cells (>= 4.1.6, < 5.0.0)
     charlock_holmes (0.7.6)
-    childprocess (0.9.0)
-      ffi (~> 1.0, >= 1.0.11)
+    childprocess (1.0.1)
+      rake (< 13.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     coffee-rails (4.2.2)
@@ -551,7 +551,7 @@ GEM
     parser (2.6.2.1)
       ast (~> 2.4.0)
     pg (1.1.4)
-    pg_search (2.1.5)
+    pg_search (2.1.6)
       activerecord (>= 4.2)
       activesupport (>= 4.2)
     powerpack (0.1.2)
@@ -688,8 +688,8 @@ GEM
       sprockets-rails
       tilt
     searchlight (4.1.0)
-    selenium-webdriver (3.141.0)
-      childprocess (~> 0.5)
+    selenium-webdriver (3.141.5926)
+      childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     sidekiq (5.2.5)
       connection_pool (~> 2.2, >= 2.2.2)
