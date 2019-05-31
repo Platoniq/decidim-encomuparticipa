@@ -27,7 +27,7 @@ group :development, :test do
   gem "byebug", "~> 10.0", platform: :mri
   gem 'dotenv-rails'
 
-  gem "decidim-dev", "0.17.0"
+  gem "decidim-dev", DECIDIM_VERSION
 end
 
 group :development do
