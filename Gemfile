@@ -8,7 +8,7 @@ ruby RUBY_VERSION
 # DECIDIM_VERSION = {github: "decidim/decidim", branch: "0.17-stable"}
 DECIDIM_VERSION = {github: "Platoniq/decidim", branch: "0.17-metrics"}
 gem "decidim", DECIDIM_VERSION
-# gem "decidim-consultations", DECIDIM_VERSION
+gem "decidim-consultations", DECIDIM_VERSION
 # gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-direct_verifications", github: 'Platoniq/decidim-verifications-direct_verifications'
 
