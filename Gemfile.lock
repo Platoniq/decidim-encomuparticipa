@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/Platoniq/decidim.git
-  revision: 339fb47e44b1c5b2d31240ff52a5466d6a7cc26b
+  revision: d06aa7a314dc387e338d8a4016745085b05d5ec2
   branch: 0.17-metrics
   specs:
     decidim (0.17.1)
@@ -263,7 +263,7 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     batch-loader (1.4.1)
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     better_html (1.0.13)
       actionview (>= 4.0)
       activesupport (>= 4.0)
