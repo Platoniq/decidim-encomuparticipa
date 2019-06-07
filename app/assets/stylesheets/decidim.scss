@@ -7,15 +7,10 @@
 // $alert: #ec5840;
 
 // $primary: #009CE3;
-$primary: #3399ff;
 // $secondary: #CD1889;
-$secondary: #cc3399;
 // $success: #008C41;
 // $warning: #FFDC00;
 // $alert: #E53726;
-$success: #cc3399;
-$warning: #cc3399;
-$alert: #cc3399;
 
 // $proposals: #238ff7;
 // $actions: #57d685;
@@ -42,5 +37,8 @@ $alert: #cc3399;
 //   --facebook: #{$facebook};
 //   --google: #{$google};
 // }
+
+
+
 
 @import "decidim/application";

@@ -2,8 +2,6 @@
   <div class="row">
     <div class="columns medium-7 mediumlarge-8">
       <div class="section">
-        <%= decidim_sanitize translated_attribute current_question.question_context %>
-
         <div class="show-more">
           <button class="button button--muted small"><%= t "read_more", scope: "decidim.questions.show" %></button>
         </div>
@@ -32,22 +30,5 @@
 <%= comments_for current_question if current_question.published? %>
 
 <%= content_for :question_header_details do %>
-  <div id="question-header-details" class="row consultations-home-intro">
-    <div class="columns medium-5">
-      <img src="<%= current_question.hero_image&.url %>" />
-    </div>
 
-    <div class="columns medium-5">
-      <% unless translated_attribute(current_question.origin_scope).blank? %>
-        <h4 class="heading6"><%= t "question.origin_scope", scope: "activemodel.attributes" %></h4>
-        <p><%= translated_attribute current_question.origin_scope %></p>
-      <% end %>
-
-      <h4 class="heading6"><%= t "question.promoter_group", scope: "activemodel.attributes" %></h4>
-      <p><%= translated_attribute current_question.promoter_group %></p>
-
-      <h4 class="heading6"><%= t "question.participatory_scope", scope: "activemodel.attributes" %></h4>
-      <p><%= translated_attribute current_question.participatory_scope %></p>
-    </div>
-  </div>
 <% end %>

@@ -1,3 +1,10 @@
+@import "variables";
+
+.button.secondary {
+  background-color: var(--secondary);
+  color: #1a181d;
+}
+
 .author-data .author__name {
   color: var(--secondary);
 }

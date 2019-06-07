@@ -4,3 +4,14 @@ ca:
       invitation_instructions:
         accept_until: Aquesta invitació et donarà accés com a usuari/a a la web %{webpage} i caducarà el dia %{due_date}.
         someone_invited_you: Has estat convidat/a a participar en l’elaboració del programa electoral de %{application}. Pots acceptar a través de l'enllaç següent.
+  layouts:
+    decidim:
+      question_components:
+        question_menu_item: Més informació
+  decidim:
+    consultations:
+      question:
+        take_part: Vota
+    questions:
+      vote_button:
+        already_voted: Ja has votat

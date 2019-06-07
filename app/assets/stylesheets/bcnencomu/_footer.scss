@@ -1,0 +1,23 @@
+@import "_variables";
+
+.decidim-logo {
+	width: 100px;
+}
+
+//Main footer
+.main-footer {
+  background-color: #fff;
+  color: $navbar-fg;
+  a {
+  	color: $navbar-fg;
+      &:hover {
+        color: $navbar-fg-hover;
+      }
+  }
+}
+
+@media print, screen and (min-width: 64em) {
+  .main__footer__nav {
+    text-align: left;
+  }
+}
