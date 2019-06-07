@@ -1,0 +1,29 @@
+<%
+scope_questions={}
+if consultation.questions.any?
+	consultation.questions_by_scope.each do |scope_id, questions|
+		next unless questions.any?
+		next if skip_scope && skip_scope == questions.first.scope
+		scope_questions[scope_id] = questions
+	end
+end
+
+%>
+
+<% if scope_questions.any? %>
+  <section id="regular-questions" class="row section">
+    <h2 class=section-heading>
+      <%= t "consultations.regular_questions.title", scope: "decidim" %>
+    </h2>
+
+    <% scope_questions.each do |scope_id, questions| %>
+      <h3 class="heading6"><%= translated_attribute questions.first.scope.name %></h3>
+      <% questions.each do |question| %>
+          questionscopeid: <%= question.decidim_scope_id %> scope: <%= scope_id.id %>
+          consulsationscopeid: <%= consultation.decidim_highlighted_scope_id %>
+
+        <%= render partial: "decidim/consultations/consultations/question", locals: { question: question } %>
+      <% end %>
+    <% end %>
+  </section>
+<% end %>
