@@ -12,6 +12,12 @@ ca:
     consultations:
       question:
         take_part: Vota
+      question_votes:
+        create:
+          title_error: Atenció!
+          error: Hi ha hagut errors en votar la pregunta
+          title_success: Felicitats!
+          success: Has votat aquesta pregunta correctament
     questions:
       vote_button:
         already_voted: Ja has votat

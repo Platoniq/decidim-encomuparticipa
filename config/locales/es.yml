@@ -12,6 +12,12 @@ es:
     consultations:
       question:
         take_part: Votar
+      question_votes:
+        create:
+          title_error: Atención!
+          error: Han ocurrido errores al votar la pregunta
+          title_success: Felicidades!
+          success: Has votado esta pregunta correctamente
     questions:
       vote_button:
         already_voted: Ya has votado
