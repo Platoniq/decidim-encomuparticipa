@@ -19,9 +19,6 @@ end
     <% scope_questions.each do |scope_id, questions| %>
       <h3 class="heading6"><%= translated_attribute questions.first.scope.name %></h3>
       <% questions.each do |question| %>
-          questionscopeid: <%= question.decidim_scope_id %> scope: <%= scope_id.id %>
-          consulsationscopeid: <%= consultation.decidim_highlighted_scope_id %>
-
         <%= render partial: "decidim/consultations/consultations/question", locals: { question: question } %>
       <% end %>
     <% end %>
