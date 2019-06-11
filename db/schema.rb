@@ -1239,28 +1239,6 @@ ActiveRecord::Schema.define(version: 2019_05_31_115479) do
     t.index ["reset_password_token"], name: "index_decidim_system_admins_on_reset_password_token", unique: true
   end
 
-  create_table "decidim_term_customizer_constraints", force: :cascade do |t|
-    t.bigint "decidim_organization_id", null: false
-    t.string "subject_type"
-    t.bigint "subject_id"
-    t.bigint "translation_set_id", null: false
-    t.index ["decidim_organization_id"], name: "decidim_term_customizer_constraint_organization"
-    t.index ["subject_type", "subject_id"], name: "decidim_term_customizer_constraint_subject"
-    t.index ["translation_set_id"], name: "decidim_term_customizer_constraint_translation_set"
-  end
-
-  create_table "decidim_term_customizer_translation_sets", force: :cascade do |t|
-    t.jsonb "name"
-  end
-
-  create_table "decidim_term_customizer_translations", force: :cascade do |t|
-    t.string "locale"
-    t.string "key"
-    t.text "value"
-    t.bigint "translation_set_id", null: false
-    t.index ["translation_set_id"], name: "decidim_term_customizer_translation_translation_set"
-  end
-
   create_table "decidim_user_group_memberships", id: :serial, force: :cascade do |t|
     t.integer "decidim_user_id", null: false
     t.integer "decidim_user_group_id", null: false
@@ -1340,14 +1318,6 @@ ActiveRecord::Schema.define(version: 2019_05_31_115479) do
     t.index ["decidim_organization_id"], name: "index_verifications_csv_census_to_organization"
   end
 
-  create_table "decidim_verifications_csv_email_csv_email_data", force: :cascade do |t|
-    t.bigint "decidim_organization_id"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["decidim_organization_id"], name: "index_verifications_csv_email_to_organization"
-  end
-
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer "resource_owner_id", null: false
     t.bigint "application_id", null: false
@@ -1422,12 +1392,8 @@ ActiveRecord::Schema.define(version: 2019_05_31_115479) do
   add_foreign_key "decidim_scopes", "decidim_scope_types", column: "scope_type_id"
   add_foreign_key "decidim_scopes", "decidim_scopes", column: "parent_id"
   add_foreign_key "decidim_static_pages", "decidim_organizations"
-  add_foreign_key "decidim_term_customizer_constraints", "decidim_organizations"
-  add_foreign_key "decidim_term_customizer_constraints", "decidim_term_customizer_translation_sets", column: "translation_set_id"
-  add_foreign_key "decidim_term_customizer_translations", "decidim_term_customizer_translation_sets", column: "translation_set_id"
   add_foreign_key "decidim_users", "decidim_organizations"
   add_foreign_key "decidim_verifications_csv_data", "decidim_organizations"
-  add_foreign_key "decidim_verifications_csv_email_csv_email_data", "decidim_organizations"
   add_foreign_key "oauth_access_grants", "decidim_users", column: "resource_owner_id"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "decidim_users", column: "resource_owner_id"
