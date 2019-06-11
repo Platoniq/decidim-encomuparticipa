@@ -19,8 +19,8 @@ es:
         create:
           title_error: Atención!
           error: Han ocurrido errores al votar la pregunta
-          title_success: Felicidades!
-          success: Has votado esta pregunta correctamente
+          title_success: 'Tu voto ha quedado registrado.'
+          success: 'Podrás cambiarlo hasta que finalice la votación y sólo quedará registrado el último voto emitido.'
     questions:
       vote_button:
         already_voted: Ya has votado

@@ -19,8 +19,8 @@ ca:
         create:
           title_error: Atenció!
           error: Hi ha hagut errors en votar la pregunta
-          title_success: Felicitats!
-          success: Has votat aquesta pregunta correctament
+          title_success: El teu vot ha quedat registrat.
+          success: Podràs canviar-lo fins que finalitzi la votació i només quedarà registrat el darrer vot emès.
     questions:
       vote_button:
         already_voted: Ja has votat
