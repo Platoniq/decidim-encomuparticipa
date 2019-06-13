@@ -10,7 +10,7 @@ ca:
   layouts:
     decidim:
       question_components:
-        question_menu_item: Més informació
+        question_menu_info: Més informació
   decidim:
     consultations:
       question:
@@ -21,6 +21,8 @@ ca:
           error: Hi ha hagut errors en votar la pregunta
           title_success: El teu vot ha quedat registrat.
           success: Podràs canviar-lo fins que finalitzi la votació i només quedarà registrat el darrer vot emès.
+      highlighted_questions:
+        title: Pregunta
     questions:
       vote_button:
         already_voted: Ja has votat

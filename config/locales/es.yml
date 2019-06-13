@@ -10,7 +10,7 @@ es:
   layouts:
     decidim:
       question_components:
-        question_menu_item: Más información
+        question_menu_info: Más información
   decidim:
     consultations:
       question:
@@ -21,6 +21,8 @@ es:
           error: Han ocurrido errores al votar la pregunta
           title_success: 'Tu voto ha quedado registrado.'
           success: 'Podrás cambiarlo hasta que finalice la votación y sólo quedará registrado el último voto emitido.'
+      highlighted_questions:
+        title: Pregunta
     questions:
       vote_button:
         already_voted: Ya has votado
