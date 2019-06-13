@@ -18,7 +18,7 @@ es:
       question_votes:
         create:
           title_error: Atención!
-          error: Han ocurrido errores al votar la pregunta
+          error: Han ocurrido errores al votar la pregunta. Recuerda que necesitas estar autentificado.
           title_success: 'Tu voto ha quedado registrado.'
           success: 'Podrás cambiarlo hasta que finalice la votación y sólo quedará registrado el último voto emitido.'
       highlighted_questions:

@@ -18,7 +18,7 @@ ca:
       question_votes:
         create:
           title_error: Atenció!
-          error: Hi ha hagut errors en votar la pregunta
+          error: Hi ha hagut errors en votar la pregunta. Recorda que necessites estar autentificat.
           title_success: El teu vot ha quedat registrat.
           success: Podràs canviar-lo fins que finalitzi la votació i només quedarà registrat el darrer vot emès.
       highlighted_questions:
