@@ -2,7 +2,7 @@ ca:
   devise:
     mailer:
       invitation_instructions:
-        accept_until: Aquesta invitació et donarà accés com a usuari/a a la web %{webpage} i caducarà el dia %{due_date}.
+        accept_until: Aquesta invitació et donarà accés a la web i caducarà el dia %{due_date}.
         someone_invited_you: Has estat convidat/da a participar en la consulta del possibles acords de govern de %{application}. Pots acceptat a través de l'enllaç següent.
     shared:
       links:
