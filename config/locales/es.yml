@@ -12,6 +12,40 @@ es:
       question_components:
         question_menu_info: Más información
   decidim:
+    authorization_handlers:
+      direct_verifications:
+        name: Censo general
+        explanation: Verificación directa para el censo general
+      direct_verifications_vella:
+        name: Ciutat Vella
+        explanation: Verificación directa para el censo de Ciutat Vella
+      direct_verifications_eixample:
+        name: L'Eixample
+        explanation: Verificación directa para el censo de L'Eixample
+      direct_verifications_sants:
+        name: Sants - Montjuïc
+        explanation: Verificación directa para el censo de Sants - Montjuïc
+      direct_verifications_corts:
+        name: Les Corts
+        explanation: Verificación directa para el censo de Les Corts
+      direct_verifications_sarria:
+        name: Sarrià - Sant Gervasi
+        explanation: Verificación directa para el censo de Sarrià - Sant Gervasi
+      direct_verifications_gracia:
+        name: Gràcia
+        explanation: Verificación directa para el censo de Gràcia
+      direct_verifications_horta:
+        name: Horta - Guinardó
+        explanation: Verificación directa para el censo de Horta - Guinardó
+      direct_verifications_barris:
+        name: Nou Barris
+        explanation: Verificación directa para el censo de Nou Barris
+      direct_verifications_andreu:
+        name: Sant Andreu
+        explanation: Verificación directa para el censo de Sant Andreu
+      direct_verifications_marti:
+        name: Sant Martí
+        explanation: Verificación directa para el censo de Sant Martí
     consultations:
       question:
         take_part: Votar
