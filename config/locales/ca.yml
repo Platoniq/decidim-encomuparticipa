@@ -60,3 +60,7 @@ ca:
     questions:
       vote_button:
         already_voted: Ja has votat
+    resources:
+      consultations:
+        actions:
+          vote: Vota

@@ -5,8 +5,8 @@ source "https://rubygems.org"
 ruby RUBY_VERSION
 
 #DECIDIM_VERSION = "0.17.0"
-# DECIDIM_VERSION = {github: "decidim/decidim", branch: "0.17-stable"}
-DECIDIM_VERSION = {github: "Platoniq/decidim", branch: "0.17-metrics"}
+DECIDIM_VERSION = {github: "Platoniq/decidim", branch: "0.18-live"}
+# DECIDIM_VERSION = {path: "../decidim"}
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 # gem "decidim-initiatives", DECIDIM_VERSION

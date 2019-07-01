@@ -60,3 +60,7 @@ es:
     questions:
       vote_button:
         already_voted: Ya has votado
+    resources:
+      consultations:
+        actions:
+          vote: Votar
