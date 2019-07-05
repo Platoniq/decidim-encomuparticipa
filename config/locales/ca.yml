@@ -1,4 +1,18 @@
 ca:
+  activemodel:
+    errors:
+      models:
+        question:
+          attributes:
+            max_votes:
+              lower_than_min: 'El nombre màxim de respostes ha de ser superior al mínim'
+  activerecord:
+    errors:
+      models:
+        decidim/consultations/vote:
+          attributes:
+            question:
+              invalid_num_votes: 'El nombre de vots és invalid'
   devise:
     mailer:
       invitation_instructions:
@@ -11,7 +25,27 @@ ca:
     decidim:
       question_components:
         question_menu_info: Més informació
+      question_header:
+        back_to_question: 'Torna a la pregunta'
   decidim:
+    admin:
+      menu:
+        questions_submenu:
+          configuration: 'Configuració'
+      question_configuration:
+        disable_external_voting: 'Si us plau, desactiva la votació externa abans d''accedir a aquesta secció'
+        form:
+          title: 'Configuració avançada'
+          help: 'Configura la multi-resposta incrementant el nombre màxim de respostes que un participant pot triar. El valor per defecte és 1, el que significa que només un resposta es podrà triar.'
+      consultations:
+        results:
+          total_votes: 'Total: %{count} votes'
+          participants: '%{count} participants'
+      responses:
+        results:
+          total_votes: 'Total: %{count} votes'
+          not_visible: Results will be available when consultation closes
+
     authorization_handlers:
       direct_verifications:
         name: Cens general
@@ -57,6 +91,22 @@ ca:
           success: Podràs canviar-lo fins que finalitzi la votació i només quedarà registrat el darrer vot emès.
       highlighted_questions:
         title: Pregunta
+      question_multiple_votes:
+        results_rules:
+          title: 'En aquesta pregunta es podien seleccionar múltiples opcions'
+          minimum_votes_per_user:
+            description: 'Els participants podien distribuir un mínim de %{votes} vots entre diferents opcions.'
+          vote_limit:
+            description: 'Els participants podien votar fins a un màxim de %{limit} opcions.'
+          total_participants: 'Un total de %{count} persones han participat en la votació.'
+        voting_rules:
+          minimum_votes_per_user:
+            description: 'Has de distribuir un mínim de %{votes} vots entre les diferents opcions.'
+          title: 'La votació està subjecte a les següents regles:'
+          vote_limit:
+            description: 'Pots votar fins a un màxim de %{limit} opcions.'
+            left: 'Et queden'
+            votes: 'Vots'
     questions:
       vote_button:
         already_voted: Ja has votat

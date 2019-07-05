@@ -1,4 +1,18 @@
 es:
+  activemodel:
+    errors:
+      models:
+        question:
+          attributes:
+            max_votes:
+              lower_than_min: 'El número máximo de respuestas debe ser superior al mínimo'
+  activerecord:
+    errors:
+      models:
+        decidim/consultations/vote:
+          attributes:
+            question:
+              invalid_num_votes: 'El número de votos es inválido'
   devise:
     mailer:
       invitation_instructions:
@@ -11,7 +25,27 @@ es:
     decidim:
       question_components:
         question_menu_info: Más información
+      question_header:
+        back_to_question: 'Volver a la pregunta'
   decidim:
+    admin:
+      menu:
+        questions_submenu:
+          configuration: Configuración
+      question_configuration:
+        disable_external_voting: 'Por favor, desactiva la votación externa antes de acceder a esta sección'
+        form:
+          title: 'Configuración avanzada'
+          help: 'Configura la multi-respuesta incrementando el número máximo de respuestas que un participante puede escoger. El valor por defecto es 1, lo que significa que sólo se puede escoger una respuesta.'
+      consultations:
+        results:
+          total_votes: 'Total: %{count} votes'
+          participants: '%{count} participantes'
+      responses:
+        results:
+          total_votes: 'Total: %{count} votes'
+          not_visible: Results will be available when consultation closes
+
     authorization_handlers:
       direct_verifications:
         name: Censo general
@@ -57,6 +91,22 @@ es:
           success: 'Podrás cambiarlo hasta que finalice la votación y sólo quedará registrado el último voto emitido.'
       highlighted_questions:
         title: Pregunta
+      question_multiple_votes:
+        results_rules:
+          title: 'En esta pregunta se podían seleccionar múltiples opciones'
+          minimum_votes_per_user:
+            description: 'Los participantes podían distribuir un mínimo de %{votes} votos entre las distintas opciones.'
+          vote_limit:
+            description: 'Los participantes podían votar hasta a un máximo de %{limit} opciones.'
+          total_participants: 'Un total de %{count} personas han participado en la votación.'
+        voting_rules:
+          minimum_votes_per_user:
+            description: 'Debes distribuir un mínimo de %{votes} votos entre las distintas opciones.'
+          title: 'La votación está sujeta a les siguientes reglas:'
+          vote_limit:
+            description: 'Puedes votar hasta a un máximo de %{limit} opciones.'
+            left: 'Te quedan'
+            votes: 'Votos'
     questions:
       vote_button:
         already_voted: Ya has votado
