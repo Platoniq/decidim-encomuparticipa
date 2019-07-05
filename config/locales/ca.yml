@@ -1,5 +1,9 @@
 ca:
   activemodel:
+    attributes:
+      question:
+        max_votes: 'Màxim número de vots'
+        min_votes: 'Minim número de vots'
     errors:
       models:
         question:
@@ -36,7 +40,7 @@ ca:
         disable_external_voting: 'Si us plau, desactiva la votació externa abans d''accedir a aquesta secció'
         form:
           title: 'Configuració avançada'
-          help: 'Configura la multi-resposta incrementant el nombre màxim de respostes que un participant pot triar. El valor per defecte és 1, el que significa que només un resposta es podrà triar.'
+          help: 'Configura la multi-resposta incrementant el nombre màxim de respostes que un participant pot triar. El valor per defecte és 1, el que significa que només es podrà tria una resposta.'
       consultations:
         results:
           total_votes: 'Total: %{count} votes'

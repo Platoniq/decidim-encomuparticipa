@@ -1,5 +1,9 @@
 es:
   activemodel:
+    attributes:
+      question:
+        max_votes: 'Número máximo de votos'
+        min_votes: 'Número mínimo de votos'
     errors:
       models:
         question:
