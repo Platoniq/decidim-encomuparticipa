@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Platoniq/decidim.git
-  revision: c8855251192b1488fb2e500138f0aa25151f3746
+  revision: bd78848d14554f3a3b5e556370fc0547f6e4bfed
   branch: 0.18-live
   specs:
     decidim (0.18.0)
