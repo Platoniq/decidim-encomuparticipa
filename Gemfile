@@ -21,6 +21,7 @@ gem "faker", "~> 1.9"
 gem "health_check"
 gem "sidekiq"
 gem "sidekiq-cron"
+gem "sentry-raven"
 
 
 group :development, :test do
