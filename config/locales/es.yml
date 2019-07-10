@@ -33,7 +33,12 @@ es:
         back_to_question: 'Volver a la pregunta'
   decidim:
     admin:
+      titles:
+        results: Resultados
+        response_groups: Grupos de respuestas
       menu:
+        consultations_submenu:
+          results: Resultados
         questions_submenu:
           configuration: Configuración
       question_configuration:
@@ -43,13 +48,23 @@ es:
           help: 'Configura la multi-respuesta incrementando el número máximo de respuestas que un participante puede escoger. El valor por defecto es 1, lo que significa que sólo se puede escoger una respuesta.'
       consultations:
         results:
-          total_votes: 'Total: %{count} votes'
+          total_votes: 'Total: %{count} votos'
           participants: '%{count} participantes'
+          not_visible: Los resultados seran visibles cuando acabe la consulta
       responses:
         results:
-          total_votes: 'Total: %{count} votes'
-          not_visible: Results will be available when consultation closes
-
+          total_votes: 'Total: %{count} votos'
+          not_visible: Los resultados seran visibles cuando acabe la consulta
+      response_groups:
+        help: Utiliza los grupos para hacer paquetes de las multiples opciones de respuesta.
+      actions:
+        response_groups: Administra grupos de respuestas
+        new_response_group: Nuevo grupo
+        back_to_responses: Volver a las respuestas
+      models:
+        response:
+          fields:
+            response_group: Grup
     authorization_handlers:
       direct_verifications:
         name: Censo general

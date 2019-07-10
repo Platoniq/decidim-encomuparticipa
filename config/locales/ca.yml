@@ -33,7 +33,12 @@ ca:
         back_to_question: 'Torna a la pregunta'
   decidim:
     admin:
+      titles:
+        results: Resultats
+        response_groups: Grups de respostes
       menu:
+        consultations_submenu:
+          results: Resultats
         questions_submenu:
           configuration: 'Configuració'
       question_configuration:
@@ -43,13 +48,23 @@ ca:
           help: 'Configura la multi-resposta incrementant el nombre màxim de respostes que un participant pot triar. El valor per defecte és 1, el que significa que només es podrà tria una resposta.'
       consultations:
         results:
-          total_votes: 'Total: %{count} votes'
+          total_votes: 'Total: %{count} vots'
           participants: '%{count} participants'
+          not_visible: Els resultats seran visibles quan s'acabi la consulta
       responses:
         results:
-          total_votes: 'Total: %{count} votes'
-          not_visible: Results will be available when consultation closes
-
+          total_votes: 'Total: %{count} vots'
+          not_visible: Els resultats seran visibles quan s'acabi la consulta
+      response_groups:
+        help: Fes servir els grups per organitzar multiples respostes a la pregunta en paquets.
+      actions:
+        response_groups: Administra grups de respostes
+        new_response_group: Nou grup
+        back_to_responses: Torna a las respostes
+      models:
+        response:
+          fields:
+            response_group: Grup
     authorization_handlers:
       direct_verifications:
         name: Cens general
