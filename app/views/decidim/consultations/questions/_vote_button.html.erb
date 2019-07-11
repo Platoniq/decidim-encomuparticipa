@@ -6,9 +6,11 @@
   </button>
 </div>
 
-<div class="row question-vote-cabin">
-  <div class="columns mediumlarge-4 mediumlarge-push-4">
-
+<div class="row column question-vote-cabin">
+  <div class="columns mediumlarge-4 show-for-mediumlarge previous-question">
+    <%= display_next_previous_button(:previous, "float-left") %>
+  </div>
+  <div class="columns mediumlarge-4">
     <% if question.consultation.upcoming? %>
       <div class="card__button button expanded disabled">
         <div class="vote-button-caption"><%= t("questions.vote_button.vote", scope: "decidim") %></div>
@@ -44,8 +46,16 @@
           </div>
         <% end %>
       <% elsif allowed_to? :vote, :question, question: question %>
-        <%= link_to "#", class: "card__button button expanded", id: "vote_button" do %>
-          <div class="vote-button-caption"><%= t "questions.vote_button.vote", scope: "decidim" %></div>
+        <% if question.multiple? %>
+          <%= link_to decidim_consultations.question_question_multiple_votes_path(question),
+                      class: "card__button button expanded",
+                      id: "multivote_button" do %>
+            <div class="vote-button-caption"><%= t "questions.vote_button.vote", scope: "decidim" %></div>
+          <% end %>
+        <% else %>
+          <%= link_to "#", class: "card__button button expanded", id: "vote_button" do %>
+            <div class="vote-button-caption"><%= t "questions.vote_button.vote", scope: "decidim" %></div>
+          <% end %>
         <% end %>
       <% end %>
     <% elsif question.consultation.active? %>
@@ -58,6 +68,17 @@
         </div>
       <% end %>
     <% end %>
+  </div>
+  <div class="columns mediumlarge-4 show-for-mediumlarge next-question">
+    <%= display_next_previous_button(:next, "float-right") %>
+  </div>
+  <div class="small-buttons">
+    <div class="columns small-6 hide-for-mediumlarge previous-question">
+      <%= display_next_previous_button(:previous, "expanded") %>
+    </div>
+    <div class="columns small-6 hide-for-mediumlarge next-question">
+      <%= display_next_previous_button(:next, "expanded") %>
+    </div>
   </div>
 </div>
 
