@@ -19,6 +19,8 @@ module Bcnencomu
   end
 end
 
-Raven.configure do |config|
-  config.dsn = ENV['SENTRY_DSN']
+unless ENV['DISABLE_SENTRY']
+  Raven.configure do |config|
+    config.dsn = ENV['SENTRY_DSN']
+  end
 end
