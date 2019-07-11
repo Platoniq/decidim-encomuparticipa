@@ -60,7 +60,7 @@ ca:
       actions:
         response_groups: Administra grups de respostes
         new_response_group: Nou grup
-        back_to_responses: Torna a las respostes
+        back_to_responses: Torna a les respostes
       models:
         response:
           fields:
