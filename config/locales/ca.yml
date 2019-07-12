@@ -126,9 +126,13 @@ ca:
             description: 'Pots votar fins a un màxim de %{limit} opcions.'
             left: 'Et queden'
             votes: 'Vots'
+      show:
+        footer_button_text:
+          vote: Vota
     questions:
       vote_button:
         already_voted: Ja has votat
+        vote: Vota
     resources:
       consultations:
         actions:
