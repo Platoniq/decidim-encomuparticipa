@@ -15,6 +15,9 @@ Decidim.configure do |config|
     here_app_code: Rails.application.secrets.geocoder[:here_app_code]
   }
 
+  # Custom vars BCNenComu
+  config.suplents_number = 3;
+
   # Custom resource reference generator method
   # config.reference_generator = lambda do |resource, component|
   #   # Implement your custom method to generate resources references
