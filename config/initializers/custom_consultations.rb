@@ -22,6 +22,7 @@ Rails.application.config.to_prepare do
       flash.now[:alert] = "El numero de suplents en els idiomes [#{errors.join(', ')}] es inferior a #{Decidim.config.suplents_number}" unless errors.blank?
     end
   end
+
   # Admin validation customization
   # Decidim::Consultations::Admin::QuestionConfigurationForm.class_eval do
   #   def min_lower_than_max

@@ -1,8 +1,8 @@
 /* eslint-disable no-invalid-this, no-undefined */
 
-MAX_SUPLENTS=2;
 
 $(function () {
+  var MAX_SUPLENTS=$('#remaining-votes-count').data('suplents-number') || 2;
   var MAX_CANDIDATS = $('#remaining-votes-count').text() - MAX_SUPLENTS;
   // console.log('MAX_CANDIDATS', MAX_CANDIDATS, 'MAX_SUPLENTS', MAX_SUPLENTS)
   // Search for suplents
