@@ -3,6 +3,29 @@
 # Custom consultation rules
 
 Rails.application.config.to_prepare do
+
+  #hide buttons if no next
+  Decidim::Consultations::QuestionsHelper.class_eval do
+    def display_next_previous_button(direction, optional_classes = "")
+      css = "card__button button hollow " + optional_classes
+
+      case direction
+      when :previous
+        return '' if previous_question.nil?
+        i18n_text = t("previous_button", scope: "decidim.questions")
+        question = previous_question || current_question
+        css << " disabled" if previous_question.nil?
+      when :next
+        return '' if next_question.nil?
+        i18n_text = t("next_button", scope: "decidim.questions")
+        question = next_question || current_question
+        css << " disabled" if next_question.nil?
+      end
+
+      link_to(i18n_text, decidim_consultations.question_path(question), class: css)
+    end
+  end
+
   # Admin check suplent number
   Decidim::Consultations::Question.class_eval do
     def get_suplents(lang)
