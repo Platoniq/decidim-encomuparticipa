@@ -27,10 +27,16 @@ Rails.application.config.to_prepare do
   end
 
   # Admin check suplent number
+  Decidim::Consultations::Response.class_eval do
+    def is_suplent(lang)
+      title[lang]&.match(/([\- ]+)(suplent)([\- ]+)/i)
+    end
+  end
+
   Decidim::Consultations::Question.class_eval do
     def get_suplents(lang)
       responses.select do |r|
-        r.title[lang].match(/([\- ]+)(suplent)([\- ]+)/i)
+        r.is_suplent(lang)
       end
     end
   end
@@ -54,10 +60,43 @@ Rails.application.config.to_prepare do
   # end
   #
   # Vote validation override
-  # Decidim::Consultations::MultipleVoteQuestion.class_eval do
-	 #  def check_num_votes
-	 #  	raise StandardError, 'You cannot vote ha ha ha!!! 🃏'
-	 #  end
-  # end
+  Decidim::Consultations::MultipleVoteQuestion.class_eval do
+	  def check_num_votes
+      question = forms&.first&.context&.current_question
+        if question
+          return if (suplents_ok?(forms) && candidats_ok?(forms)) || group_ok?(forms)
+        end
+      raise StandardError, I18n.t("activerecord.errors.models.decidim/consultations/vote.attributes.question.invalid_num_votes")
+	  end
+
+    def group_ok?(forms)
+      question = forms&.first&.context&.current_question
+      groups = forms.map {|f| f.response.response_group.id }.uniq
+      return false if groups.count > 1
+      valid = question.responses.select {|r| r.response_group.id == groups[0]}.map {|r| r.id }
+      valid.count == forms.count
+    end
+
+    def suplents_ok?(forms)
+      get_suplents(forms).count == Decidim.config.suplents_number
+    end
+
+    def candidats_ok?(forms)
+      question = forms&.first&.context&.current_question
+      get_candidats(forms).count == question.max_votes - Decidim.config.suplents_number
+    end
+
+    def get_suplents(forms)
+      forms.select do |f|
+        f.response.is_suplent(I18n.locale.to_s)
+      end
+    end
+
+    def get_candidats(forms)
+      forms.reject do |f|
+        f.response.is_suplent(I18n.locale.to_s)
+      end
+    end
+  end
 
 end
