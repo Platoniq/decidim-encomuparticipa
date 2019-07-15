@@ -1,8 +1,10 @@
 .multiple_votes_form_group_title {
 	h5  {
+		flex-shrink: 1;
 		label {
 			font-size: inherit;
 			font-weight: inherit;
+			line-height: 1.5;
 			color: inherit;
 			margin: 0 0 -10px 0;
 		}
