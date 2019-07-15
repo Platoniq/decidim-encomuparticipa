@@ -14,6 +14,16 @@
 	}
 }
 
+.multiple_votes_form {
+	>div {
+		display: flex;
+		>input {
+			align-self: flex-start;
+			margin-top: 5px;
+		}
+	}
+}
+
 .masonry {
 	$masonry-css-column-gap: $global-margin; // TODO: get it from $global-margin foundation CSS;
 
