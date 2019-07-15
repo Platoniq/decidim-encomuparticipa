@@ -31,6 +31,9 @@ Rails.application.config.to_prepare do
     def is_suplent(lang)
       title[lang]&.match(/([\- ]+)(suplente?)([\- ]+)/i)
     end
+    def is_blanc(lang)
+      title[lang]&.match(/([\- ]+)(blanco?)([\- ]+)/i)
+    end
   end
 
   Decidim::Consultations::Question.class_eval do
@@ -67,40 +70,72 @@ Rails.application.config.to_prepare do
   #
   # Vote validation override
   Decidim::Consultations::MultipleVoteQuestion.class_eval do
+    def locale
+      # I18n.locale.to_s
+      'ca'
+    end
+
 	  def check_num_votes
-      question = forms&.first&.context&.current_question
-        if question
-          return if (suplents_ok?(forms) && candidats_ok?(forms)) || group_ok?(forms)
+      Rails.logger.debug "===VOTE==="
+       @question = forms&.first&.context&.current_question
+        if @question
+          return if num_votes_ok?(forms) || group_ok?(forms) || is_blanc?(forms)
         end
+      Rails.logger.debug "===ERROR==="
       raise StandardError, I18n.t("activerecord.errors.models.decidim/consultations/vote.attributes.question.invalid_num_votes")
 	  end
 
+    def is_blanc?(forms)
+      Rails.logger.debug "===is_blanc? Total blancs #{get_blancs(forms).count} total forms #{@forms.count}"
+      (get_blancs(forms).count == forms.count) && (forms.count > 0)
+    end
+
     def group_ok?(forms)
-      question = forms&.first&.context&.current_question
-      groups = forms.map {|f| f.response.response_group.id }.uniq
-      return false if groups.count > 1
-      valid = question.responses.select {|r| r.response_group.id == groups[0]}.map {|r| r.id }
-      valid.count == forms.count
+      groups = forms.map {|f| f.response.response_group&.id }.uniq
+      Rails.logger.debug "===group_ok? groups found #{groups.count}, group ids #{groups}"
+      return false if groups.count > 1 || groups.count == 0 || groups[0].blank?
+      # max votable titular/suplents in this group
+      valid = @question.responses.select {|r| r.response_group&.id == groups[0]}
+      valid_suplents = valid.select {|r| r.is_suplent locale }.count
+      min_titulars = [valid.count - valid_suplents, @question.max_votes - @question.min_votes].min
+      min_suplents = [valid_suplents, @question.min_votes].min
+      total_titulars = get_candidats(forms).count
+      total_suplents = get_suplents(forms).count
+
+      Rails.logger.debug "===group_ok? Total titulars in group #{groups[0]}: #{total_titulars} expected #{min_titulars}"
+      Rails.logger.debug "===group_ok? Total suplents in group #{groups[0]}: #{total_suplents} expected #{min_suplents}"
+      total_titulars == min_titulars && total_suplents == min_suplents
+    end
+
+    def num_votes_ok?(forms)
+      Rails.logger.debug "===candidats_ok? Total candidats #{get_candidats(forms).count} expected #{@question.max_votes-@question.min_votes}"
+      Rails.logger.debug "===suplents_ok? Total suplents #{get_suplents(forms).count} expected #{@question.min_votes}"
+      suplents_ok?(forms) && candidats_ok?(forms)
     end
 
     def suplents_ok?(forms)
-      get_suplents(forms).count == Decidim.config.suplents_number
+      get_suplents(forms).count == @question.min_votes
     end
 
     def candidats_ok?(forms)
-      question = forms&.first&.context&.current_question
-      get_candidats(forms).count == question.max_votes - Decidim.config.suplents_number
+      get_candidats(forms).count == @question.max_votes - @question.min_votes
+    end
+
+    def get_blancs(forms)
+      forms.select do |f|
+        f.response.is_blanc locale
+      end
     end
 
     def get_suplents(forms)
       forms.select do |f|
-        f.response.is_suplent(I18n.locale.to_s)
+        f.response.is_suplent locale
       end
     end
 
     def get_candidats(forms)
       forms.reject do |f|
-        f.response.is_suplent(I18n.locale.to_s)
+        f.response.is_suplent locale
       end
     end
   end

@@ -113,6 +113,10 @@ $(function () {
     if($(groups).is(':checked')) {
       return true;
     }
+    // If blanc is checked, bypasses counters
+    if($blanc && $blanc.is(':checked')) {
+      return true;
+    }
     updateCounters();
     if(candidats > 0) {
       alert('Encara et falten votar ' + candidats + ' candidats');
