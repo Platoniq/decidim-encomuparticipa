@@ -28,6 +28,10 @@ Rails.application.config.to_prepare do
 
   # Admin check suplent number
   Decidim::Consultations::Question.class_eval do
+    # Ensure order by time
+    def sorted_responses
+      responses.order({decidim_consultations_response_group_id: :asc, created_at: :asc})
+    end
     def get_suplents(lang)
       responses.select do |r|
         r.title[lang].match(/([\- ]+)(suplent)([\- ]+)/i)
