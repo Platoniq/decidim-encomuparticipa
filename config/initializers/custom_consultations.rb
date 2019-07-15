@@ -29,11 +29,16 @@ Rails.application.config.to_prepare do
   # Admin check suplent number
   Decidim::Consultations::Response.class_eval do
     def is_suplent(lang)
-      title[lang]&.match(/([\- ]+)(suplent)([\- ]+)/i)
+      title[lang]&.match(/([\- ]+)(suplente?)([\- ]+)/i)
     end
   end
 
   Decidim::Consultations::Question.class_eval do
+    # Ensure order by time
+    def sorted_responses
+      responses.order({decidim_consultations_response_group_id: :asc, created_at: :asc})
+    end
+
     def get_suplents(lang)
       responses.select do |r|
         r.is_suplent(lang)
@@ -44,11 +49,12 @@ Rails.application.config.to_prepare do
   Decidim::Consultations::Admin::ResponsesController.class_eval do
     def index
       enforce_permission_to :read, :response
+      return unless current_question.multiple?
       errors = []
       current_question.title.each do |l,t|
-        errors << l if current_question.get_suplents(l).count < Decidim.config.suplents_number
+        errors << l if current_question.get_suplents(l).count < current_question.min_votes.to_i
       end
-      flash.now[:alert] = "El numero de suplents en els idiomes [#{errors.join(', ')}] es inferior a #{Decidim.config.suplents_number}" unless errors.blank?
+      flash.now[:alert] = "El numero de suplents en els idiomes [#{errors.join(', ')}] es inferior a #{current_question.min_votes}" unless errors.blank?
     end
   end
 

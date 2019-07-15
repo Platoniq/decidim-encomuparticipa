@@ -3,7 +3,7 @@ es:
     attributes:
       question:
         max_votes: 'Número máximo de votos'
-        min_votes: 'Número mínimo de votos'
+        min_votes: 'Número de suplentes'
     errors:
       models:
         question:
@@ -114,13 +114,13 @@ es:
         results_rules:
           title: 'En esta pregunta se podían seleccionar múltiples opciones'
           minimum_votes_per_user:
-            description: 'Los participantes podían distribuir un mínimo de %{votes} votos entre las distintas opciones.'
+            description: 'Los participantes podían distribuir %{votes} votos entre las distintas opciones para escojer suplentes.'
           vote_limit:
-            description: 'Los participantes podían votar hasta a un máximo de %{limit} opciones.'
+            description: 'Los participantes podían votar hasta a un máximo de %{limit} opciones (incluyendo suplentes).'
           total_participants: 'Un total de %{count} personas han participado en la votación.'
         voting_rules:
           minimum_votes_per_user:
-            description: 'Debes distribuir un mínimo de %{votes} votos entre las distintas opciones.'
+            description: 'De estos, %{votes} votos debes usarlos para escojer suplentes.'
           title: 'La votación está sujeta a les siguientes reglas:'
           vote_limit:
             description: 'Puedes votar hasta a un máximo de %{limit} opciones.'

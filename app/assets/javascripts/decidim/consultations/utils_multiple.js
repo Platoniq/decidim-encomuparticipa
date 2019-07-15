@@ -7,12 +7,18 @@ $(function () {
   // console.log('MAX_CANDIDATS', MAX_CANDIDATS, 'MAX_SUPLENTS', MAX_SUPLENTS)
   // Search for suplents
   var SUPLENTS = [];
-  var regex = /([\- ]+)(suplent)([\- ]+)/i;
+  var s_regex = /([\- ]+)(suplente?)([\- ]+)/i;
+  var b_regex = /([\- ]+)(en blanco?)([\- ]+)/i;
   $('form .multiple_votes_form label').each(function(){
     var $label = $(this);
 
-    if($label.text().match(regex)) {
-      var bold = $label.text().replace(regex, " <strong>-$2-</strong>");
+    if($label.text().match(s_regex)) {
+      var bold = $label.text().replace(s_regex, " <strong>-$2-</strong>");
+      // console.log('found suplent', 'BOLD', bold, 'LABEL', $label)
+      $label.html(bold);
+    }
+    if($label.text().match(b_regex)) {
+      var bold = $label.text().replace(b_regex, " <strong>-$2-</strong>");
       // console.log('found suplent', 'BOLD', bold, 'LABEL', $label)
       $label.html(bold);
     }
@@ -23,23 +29,51 @@ $(function () {
   var inputs = 'form .multiple_votes_form input[type="checkbox"]';
   var candidats = MAX_CANDIDATS;
   var suplents = MAX_SUPLENTS;
+  var $blanc = null;
 
-  function is_suplent($input) {
-    return $input.parent().find('label').text().match(regex);
+  function isSuplent($input) {
+    return $input.parent().find('label').text().match(s_regex);
   }
-  function update_counters() {
+  function isBlanc($input) {
+    return $input.parent().find('label').text().match(b_regex);
+  }
+  function updateCounters() {
     candidats = MAX_CANDIDATS;
     suplents = MAX_SUPLENTS;
-    $(inputs + ':checked').each(function(){
-      if(is_suplent($(this))) suplents--;
+    $blanc = null;
+    $(inputs + ':checked').each(function() {
+      if(isSuplent($(this))) suplents--;
       else candidats--;
+      if(isBlanc($(this))) $blanc = $(this);
     });
+  }
+  function updateBanner() {
+    $remainingVotesCount.text(candidats + suplents);
+    // If group marked, set to zero
+    if($(groups).is(':checked') || $blanc) {
+      $remainingVotesCount.text(0);
+    }
   }
 
   $(inputs).on('change', function() {
 
-    update_counters();
-    // console.log('candidats', candidats, 'suplents', suplents)
+    updateCounters();
+    if(isBlanc($(this))) {
+      $(inputs).not($(this)).prop('checked', false);
+      $(groups).prop('checked', false);
+      // check closest group if exists
+      $(this).closest('.card').find('.multiple_votes_form_group_title input').prop('checked', true);
+      updateBanner();
+      return;
+    } else {
+      // console.log('unclick blanc', $blanc);
+      // unclick blanc
+      if($blanc) {
+        $blanc.prop('checked', false);
+        $blanc = null;
+      }
+    }
+    // console.log('candidats', candidats, 'suplents', suplents, 'isBlanc', isBlanc($(this)), 'blanc', $blanc)
     if(candidats < 0 || suplents < 0) {
       $(this).attr('checked', false);
       if(suplents <0 ) alert('Ja has triat el nombre màxim de suplents!');
@@ -48,21 +82,25 @@ $(function () {
     }
     // unmark groups if manually changed
     $(groups).prop('checked', false);
-    $remainingVotesCount.text(candidats + suplents);
+    updateBanner();
   });
 
   // Group click handeling
   $(groups).on('change', function() {
     var $group = $(this);
     if($group.is(':checked')) {
+      // uncheck other inputs
       $(inputs).prop('checked', false);
+      // uncheck other groups
+      $(groups).not($(this)).prop('checked', false);
       $group.closest('.card').find('.multiple_votes_form input[type="checkbox"]').each(function(){
-        update_counters();
+        updateCounters();
 
-        var can_and_is_suplent = is_suplent($(this)) && suplents > 0;
-        var can_and_is_candidat = !is_suplent($(this)) && candidats > 0;
+        var can_and_is_suplent = isSuplent($(this)) && suplents > 0;
+        var can_and_is_candidat = !isSuplent($(this)) && candidats > 0;
         if(can_and_is_suplent || can_and_is_candidat) {
           $(this).prop('checked', true);
+          updateBanner();
         }
       });
     }
@@ -75,7 +113,7 @@ $(function () {
     if($(groups).is(':checked')) {
       return true;
     }
-    update_counters();
+    updateCounters();
     if(candidats > 0) {
       alert('Encara et falten votar ' + candidats + ' candidats');
       return false;

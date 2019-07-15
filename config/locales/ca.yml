@@ -3,7 +3,7 @@ ca:
     attributes:
       question:
         max_votes: 'Màxim número de vots'
-        min_votes: 'Minim número de vots'
+        min_votes: 'Número de suplents'
     errors:
       models:
         question:
@@ -114,13 +114,13 @@ ca:
         results_rules:
           title: 'En aquesta pregunta es podien seleccionar múltiples opcions'
           minimum_votes_per_user:
-            description: 'Els participants podien distribuir un mínim de %{votes} vots entre diferents opcions.'
+            description: 'Els participants podien distribuir un %{votes} vots entre diferents opcions per triar els suplents.'
           vote_limit:
-            description: 'Els participants podien votar fins a un màxim de %{limit} opcions.'
+            description: 'Els participants podien votar fins a un màxim de %{limit} opcions (incloent suplents).'
           total_participants: 'Un total de %{count} persones han participat en la votació.'
         voting_rules:
           minimum_votes_per_user:
-            description: 'Has de distribuir un mínim de %{votes} vots entre les diferents opcions.'
+            description: 'D''aquests, %{votes} vots els has de fer servir per triar suplents.'
           title: 'La votació està subjecte a les següents regles:'
           vote_limit:
             description: 'Pots votar fins a un màxim de %{limit} opcions.'
