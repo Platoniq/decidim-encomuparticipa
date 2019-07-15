@@ -1,7 +1,13 @@
 /* eslint-disable no-invalid-this, no-undefined */
 
-
 $(function () {
+
+  // mansonry columns
+  $('.masonry').masonry({
+    // options
+    itemSelector: '.masonry .column',
+  });
+
   var MAX_SUPLENTS=$('#remaining-votes-count').data('suplents-number') || 2;
   var MAX_CANDIDATS = $('#remaining-votes-count').text() - MAX_SUPLENTS;
   // console.log('MAX_CANDIDATS', MAX_CANDIDATS, 'MAX_SUPLENTS', MAX_SUPLENTS)

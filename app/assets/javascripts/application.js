@@ -13,3 +13,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require decidim
+//= require_tree ./bcnencomu
