@@ -3,10 +3,10 @@
 $(function () {
 
   // mansonry columns
-  $('.masonry').masonry({
-    // options
-    itemSelector: '.masonry .column',
-  });
+  // $('.masonry').masonry({
+  //   // options
+  //   itemSelector: '.masonry .column',
+  // });
 
   var MAX_SUPLENTS=$('#remaining-votes-count').data('suplents-number') || 2;
   var MAX_CANDIDATS = $('#remaining-votes-count').text() - MAX_SUPLENTS;
