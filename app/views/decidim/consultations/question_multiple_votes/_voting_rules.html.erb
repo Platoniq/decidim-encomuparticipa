@@ -15,7 +15,7 @@
         <div class="card card--nomargin text-center remaining-votes-counter">
           <div class="card__content">
             <span class="definition-data__title"><%= t(".vote_limit.left", limit: question.max_votes) %></span>
-            <span id="remaining-votes-count" data-suplents-number="<%= Decidim.config.suplents_number %>" class="extra__suport-number">
+            <span id="remaining-votes-count" data-suplents-number="<%= question.min_votes %>" class="extra__suport-number">
               <%= question.max_votes %>
             </span>
             <span class="extra__suport-text"><%= t(".vote_limit.votes") %></span>

@@ -32,9 +32,10 @@ Rails.application.config.to_prepare do
     def sorted_responses
       responses.order({decidim_consultations_response_group_id: :asc, created_at: :asc})
     end
+
     def get_suplents(lang)
       responses.select do |r|
-        r.title[lang].match(/([\- ]+)(suplent)([\- ]+)/i)
+        r.title[lang].match(/([\- ]+)(suplente?)([\- ]+)/i)
       end
     end
   end
