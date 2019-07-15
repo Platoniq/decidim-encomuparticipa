@@ -12,8 +12,15 @@
   <div class="card-section">
     <strong>IMPORTANT</strong>:
     <ul>
-      <li>El máxim ha d'incloure els suplents + els càrrecs, el nombre de suplents actualment està configurat a <strong><%= Decidim.config.suplents_number %></strong></li>
-      <li>El mínim ha de correspondre al numero de persones que tingui la llista més curta. En cas de dubte poseu-hi simplement <strong>1</strong></li>
+      <li>El máxim ha d'incloure els suplents + els càrrecs.</li>
+      <li>El mínim de vots està configurat internament a <strong>1</strong> per tenir en compte llistes individuals</li>
+      <li>El sistema no deixarà votar en els seguents casos:
+        <ul>
+          <li>Que s'intenti votar en blanc i una altra opció alhora</li>
+          <li>Que no s'exaureixin el numero màxim de vots si no s'ha triat un grup</li>
+          <li>Que el numero de suplents sigui inferior al configurat</li>
+        </ul>
+      </li>
     </ul>
 
   </div>
