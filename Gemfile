@@ -14,7 +14,7 @@ gem "decidim-direct_verifications", github: 'Platoniq/decidim-verifications-dire
 
 gem "bootsnap", "~> 1.3"
 
-gem "puma", "~> 3.0"
+gem "puma", "~> 3.12"
 gem "uglifier", "~> 4.1"
 
 gem "sprockets", "~> 3.7.2"
